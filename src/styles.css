@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --green: #ff7d7d;
+}
+
+.app{
+    height: 100vh;
+    font-family: 'Quicksand', sans-serif;
+}
+
+main{
+    width: 100vw;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+/* 
+==============================================
+Nav bar
+============================================== */
+
+h1{
+    color: var(--green);
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 200;
+    border-bottom: 5px var(--green) solid;
+    padding: 2px;
+    margin: 23px;
+}
+
+.nav-links a{
+    color: black;
+}
+
+.nav-links a:hover{
+    color: var(--green);
+}
+
+.navbar-list{
+    display: flex;
+    float: right;
+    text-decoration: none;
+    margin: 20px;
+    list-style-type: none;
+}
+
+.nav-links,
+.rezeptHinBttn {
+    padding:15px 30px 15px 0;
+    font-size: 16px;
+}
+
+.rezeptHinBttn{
+    background-color: var(--green);
+    border-radius: 8px;
+    color: white;
+    padding: 15px;
+}
+
+.rezeptHinBttn:hover{
+    background-color: white;
+    color: var(--green);
+    border: var(--green) 2px solid;
+    padding: 13px;
+}
+
+/* 
+==============================================
+Home
+============================================== */
+
+
+.home{
+    width: 100vw;
+    height: 87vh;
+    overflow: hidden;
+    display: block;
+}
+
+.homeBG{
+    display: block;
+    width: 100vw;
+    height: auto;
+    position: relative;
+    top:0;
+    z-index: 1;
+}
+
+.home-content{
+    position: absolute;
+    top:50%;
+    left: 5%;
+    width: 100vw;
+    font-weight: 700;
+    z-index: 9;
+}
+
+.home-title{
+    display: inline;
+    border-radius: 8px;
+    color: white;
+    background-color: rgba(0,0,0,0.6);
+    width: 80vw;
+    font-size: 4vw;
+    font-weight: 200;
+    z-index: 7;
+    padding: 10px;
+    margin: 10px;
+    
+}
+
+.form-home{
+    z-index: 8;
+    display: flex;
+    margin-top: 60px;
+    font-family: inherit;
+}
+
+#search-field{
+    width: 50vw;
+    font-family: inherit;
+    font-size: 27px;
+    border: none;
+}
+
+#search-bttn{
+    width: 125px;
+    height: 44px;
+    margin-left:12px;
+    font-family: inherit;
+    background-color: var(--green);
+    box-shadow: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+}
+
+@media screen and (min-width: 310px) {
+    .home{
+        height: 100vh;
+    }
+}
+
+/* 
+==============================================
+Recipeslist
+============================================== */
+
+.collection-page{
+    display: flex;
+}
+
+.filter{
+    min-width: 250px;
+    height: 300px;
+    box-shadow: rgb(216, 216, 216) 5px 5px 5px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.filter label{
+    font-weight: 100;
+}
+
+#filter-time,
+#name,
+.filter select{
+    width: 70%;
+    
+}
+
+.filter-time-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.filter-time{
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-list{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.recipe-list a{
+    padding: 25px;
+    margin: 15px;
+    border: var(--green) 2px solid;
+    box-shadow: 5px 5px var(--green);
+    width: 40%; 
+    cursor: pointer;
+}
+
+.recipe-list a:active{
+    transform: translate(5px, 5px);
+    box-shadow: none;
+    
+}
+
+.recipe-list-title{
+    font-size: 24px;;
+}
+
+.recipe-list-min{
+    font-size: 12px;
+    color: rgb(199, 199, 199);
+}
+
+.title-list-zutaten{
+    margin: 10px 0;
+}
+
+.list-zutaten{
+    width: 100%;
+    border-bottom: lightgray 1px solid;
+    list-style-type: none;
+}
+
+/* 
+==============================================
+Add Recipe
+============================================== */
+
+.add-form{
+    margin: 25px;
+}
+
+.add-form h2{
+    font-weight: 100;
+    text-align: center;
+}
+
+.add-form-input{
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    margin: 20px auto 50px auto;
+}
+
+.add-form input{
+    margin-bottom: 30px;
+}
+
+.form-person-time{
+    display: flex;
+    justify-content: space-between;
+}
+
+label{
+    margin-top: 15px;
+    display: inline-block;
+    font-weight: 900;
+}
+
+input,
+select,
+textarea{
+    border:lightgray solid 1px;
+    margin: 5px 5px 5px 0;
+    padding: 2px;
+    line-height: 24px;
+    font-size: 15px;
+    font-family: inherit; 
+    width: 100%;
+}
+
+.zubereitungszeit{
+    display: flex;
+}
+
+.zubereitungszeit p{
+    margin: 7.5px 0;
+}
+.ingredients,
+.ingredients-list,
+.added-ingredient{
+    width: 100%;
+}
+
+#person,
+#dauer,
+#art{
+    width: 100px;
+}
+
+#zutaten{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.added-ingredients{
+    border: lightgray 1px solid;
+    color: lightgray;
+}
+
+
+.plus{
+    float: right;
+    position: relative;
+    left: 6px;
+    top: 33.5px;
+    border-radius: 8px;
+    background-color: var(--green);
+    line-height: 13px;
+    font-size: 24px;
+    font-weight: 100;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.submit{
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* 
+==============================================
+Recipe Added
+============================================== */
+
+  @keyframes underline {
+    100%{width: 100%;}
+  }
+
+.recipe-added{
+    display: block;
+}
+
+.recipe-added-title{
+    position: absolute;
+    left: 50%;
+    top: 280px;
+    transform: translateX(-50%);  
+}
+
+.underline{
+    width: 0%;
+    height: 5px;
+    background-color: rgb(162 213 185);
+    animation: underline 2s infinite linear;
+}
+
+.circle{
+    border: rgb(162 213 185) 3px solid;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 148px;
+    transform: translateX(-50%);
+}
+
+.check-right,
+.check-left{
+    position: absolute;
+    background-color: rgb(162 213 185);
+    transform-origin: bottom left;
+    border-radius: 8px;
+    width: 7px;
+}
+
+.check-left{
+    top: 28px;
+    left: 50%;
+    height: 50px;
+    transform: rotate(-45deg);
+}
+
+.check-right{
+    left: 45%;
+    top: -27px;
+    height: 100px;
+    transform: rotate(45deg);
+}
+
+/* 
+==============================================
+Recipe 
+============================================== */
+
+.recipe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article{
+    margin: 5px auto 100px auto;
+    width: 680px;
+}
+
+.recipe-title{
+    border-bottom: var(--green) 1px solid;
+}
+
+h3{
+    font-weight: 200;
+    font-size: 18px;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.recipe-zubereitungszeit{
+    color:rgb(199, 199, 199)
+}
+
+.recipe-liste-title{
+    margin-top: 30px;
+}
+
+.recipe-zutaten-liste{
+    margin-bottom: 30px;
+    max-width: 400px;
+}
+
+.recipe-zutaten{
+    list-style: none;
+    border-bottom: lightgray 1px solid;
+    padding-left: 10px;
+}
+
+.recipe-zubereitung{
+    white-space: pre-wrap;
+    padding-left: 10px;
+}
+
+.delete,
+.change{
+    background-color: var(--green);
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+}

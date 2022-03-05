@@ -1,16 +1,16 @@
 import { useHistory } from "react-router";
-import useFetch from "./useFetch";
+import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-const RecipeAdded = () => {
+const RecipeAdded = (props) => {
 
-    const {data} = useFetch('http://localhost:3000/Recipes');
     const history = useHistory();
+    const location = useLocation();
+    const { id } = useParams();
+console.log(location.state.state)
 
-    setTimeout(()=>{
-        if(Array.isArray(data)){
-            history.push(`/Recipe/${data.length}`);
-        }
-    },2000)
+    setTimeout(() => {
+            history.push(`/recipes/${location.state.id}`)
+            }, 2000);
 
     return ( 
         <div className="recipe-added">
@@ -26,6 +26,6 @@ const RecipeAdded = () => {
             </div>
         </div>
      );
-}
+    }
  
 export default RecipeAdded;

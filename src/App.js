@@ -7,7 +7,6 @@ import RecipeAdded from './RecipeAdded';
 import Recipe from './Recipe';
 import ChangeRecipe from './ChangeRecipe';
 
-
 function App() {
 
   return (
@@ -35,7 +34,7 @@ function App() {
           <RecipeAdded />
         </Route>
 
-        <Route path="/recipe/:id">
+        <Route path="/recipes/:id">
           <Recipe />
         </Route>
 

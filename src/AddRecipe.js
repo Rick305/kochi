@@ -1,27 +1,68 @@
-import { useState } from "react";
+import { useEffect, useState, React, Fragment } from "react";
 import { useHistory } from "react-router";
+import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import firebase from "./firebase";
 
-const AddRecipe = () => {
+const AddRecipe = (props) => {
 
-const history = useHistory();
+    const history = useHistory();
+const ref = firebase.firestore().collection("recipes");
+
 
 const [title, setTitle] = useState('');
 const [person, setPerson] = useState('')
 const [time, setTime] = useState('');
-const [art, setArt] = useState('');
+const [art, setArt] = useState('Vorspeise.');
 const [ingredient, setIngredient] = useState([]);
 const [allIngredient, setAllIngredient] = useState([]);
 const [description, setDescription] = useState('');
 
-const htmlTemplate = `<li className="added-ingredient" style="color:gray; border: lightgray 1px solid; padding: 5px; margin-bottom: 5px;list-style: none;">`+ ingredient + `</li>`;
+const location = useLocation();
+
+useEffect(()=> {
+    if (location.state){ //if needed to make changes, set pre settings
+    let data = location.state.data;
+    setTitle(data.title);
+    setPerson(data.person);
+    setTime(data.time);
+    setArt(data.art);
+    setIngredient(data.ingredient);
+    setAllIngredient(data.allIngredient);
+    setDescription(data.description);
+} else {
+    setTitle('');
+    setPerson('');
+    setTime('');
+    setArt('Vorspeise.');
+    setIngredient([]);
+    setAllIngredient([]);
+    setDescription('');
+}
+}, [location.state])
 
 const handleClick = () => {
-    
-    if(ingredient != ''){
-        document.querySelector('.output-ingredients-list').innerHTML += htmlTemplate;
-    setAllIngredient(allIngredient => [...allIngredient, ingredient]);
-    setIngredient('')
+    if(ingredient !== ''){
+        setAllIngredient(allIngredient => [...allIngredient, ingredient]);
+        setIngredient('')
     }
+}
+
+const handleDelete = (e) =>{
+    if(e.target.className === "deletebtn"){
+        const name = e.target.previousSibling.textContent;
+        setAllIngredient(allIngredient.filter(item => item !== name));
+    }
+}
+
+function addRecipe(recipe){
+    ref
+    .add(recipe)
+    .catch((err) => {
+      console.error(err);
+    })
+    .then((ref) => {
+        history.push("/recipeadded", {id: ref.id})
+        })
 }
 
 const handleSubmit = (e) => {
@@ -31,18 +72,24 @@ const handleSubmit = (e) => {
 
     const recipe = { title, person, time, art, allIngredient, description};
 
-    fetch('http://localhost:3000/Recipes', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(recipe)
-    }).then(() => {
-        history.push("/recipeadded");
+    if(!location.state){
+   addRecipe(recipe);
+}else {
+    ref.doc(location.state.id)
+    .update(recipe)
+    .then(() => {
+        console.log('Document is updated');
     })
+    .catch((error) => {
+        console.log("Error updating doc", error)
+    })
+    history.push(`/recipes/${location.state.id}`);  
+}
 }
 
     return ( 
         <div className="add-form">
-            <h2>Füge deine ganz leckeren Rezepte hinzu!</h2>
+            <h2>{location.state ? 'Passe das Rezept nach deinen Wünschen an' :'Füge deine ganz leckeren Rezepte hinzu!'}</h2>
             <form onSubmit={handleSubmit} className="add-form-input">
                  <label for="title">Gericht</label>
                  <input 
@@ -51,6 +98,7 @@ const handleSubmit = (e) => {
                  name="title" 
                  value={title}
                  onChange={(e) => setTitle(e.target.value)}
+                 required
                  />
                  <div className="form-person-time">
                      <div className="person-wrapper">
@@ -61,6 +109,7 @@ const handleSubmit = (e) => {
                         name="person"
                         value={person}
                         onChange={(e) => setPerson(e.target.value)}
+                        required
                         />
                      </div>
                      <div className="time-wrapper">
@@ -72,6 +121,7 @@ const handleSubmit = (e) => {
                             name="dauer"
                             value={time}
                             onChange={(e) => setTime(e.target.value)}
+                            required
                             />
                             <p>Min.</p>
                         </div>
@@ -83,6 +133,7 @@ const handleSubmit = (e) => {
                          id="art"
                          value={art}
                          onChange={(e) => setArt(e.target.value)}
+                         required
                          >
                             <option value="Vorspeise.">Vorspeise</option>
                             <option value="Hauptspeise.">Hauptspeise</option>
@@ -105,8 +156,13 @@ const handleSubmit = (e) => {
                          onChange={(e) => setIngredient(e.target.value)}
                          /><br/>
                 </div>
-                <div className="output-ingredients-list">
-                     
+                <div className="output-ingredients-list" onClick={handleDelete}>
+                     {allIngredient.map((allIngredient, index) => (
+                        <li key={index}>
+                                <p>{allIngredient}</p>
+                             <div className="deletebtn"></div>
+                         </li>
+                     ))}
                 </div>
 
                  <label for="arbeit">Zubereitung</label>
@@ -114,11 +170,13 @@ const handleSubmit = (e) => {
                  rows="5" 
                  value={description}
                  onChange={(e) => setDescription(e.target.value)}
+                 required
                  /> <br/>
-
+                 
+                 <div className={location.state ? "save-changes" : "hide"} onClick={() => {history.goBack()}}>Abbrechen</div>
                  <input type="submit" value="Speicher Rezept" className="submit"></input>
+                 
             </form>
-            <p>{ ingredient }</p>
         </div>
      
      );

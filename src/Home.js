@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import bg from './stock_photo.jpg';
+import bgImg from './img/stock_photo.jpg';
 
 const Home = () => {
     const [textSearch, setTextSearch] = useState('');
@@ -16,7 +16,7 @@ const Home = () => {
     
     return ( 
         <div className="home">
-          <img src={bg} className="homeBG"/>
+          <img src={bgImg} className="homeBG"/>
 
           <div className="home-content">
           <h2 className="home-title">Suche nach deinen leckeren Gerichten</h2>

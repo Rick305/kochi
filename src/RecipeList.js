@@ -1,12 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import useFetch from "./useFetch";
+import firebase from "./firebase";
 
 const RecipeList = (props) => {
 
     const location = useLocation();
+    const [data, setData] = useState([]);
+    const ref = firebase.firestore().collection("recipes");
 
-    const {data} = useFetch('http://localhost:3000/Recipes');
+    function getData() {
+        ref.get().then((item) => {
+          const items = item.docs.map((doc) => ({...doc.data(), id: doc.id}))
+           setData(items);
+    })
+    }
+    
+   useEffect(()=>{
+       getData()
+   }, []);
+
 
     const[title, setTitle] = useState('');
     const[art, setArt] = useState('')
@@ -22,8 +35,6 @@ const RecipeList = (props) => {
     <div className="collection-page">
         
         <div className="filter">
-
-            <h2 className="filter-title">Filter</h2>
 
             <div className="filter-name">
                 <label for="name">Gericht</label><br/>
@@ -79,7 +90,7 @@ const RecipeList = (props) => {
                             return recipe
                         }
                      }).map((data) => 
-                            <Link to={`/Recipe/${data.id}`}>
+                            <Link to={`/recipes/${data.id}`}>
                                 <div className="recipe-item" key={data.id}>                
                                     <p className="recipe-list-title"> {data.title}</p>
                                     <p className="recipe-list-min">{data.time} min.</p>

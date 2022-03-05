@@ -15,14 +15,14 @@ const ChangeRecipe = () => {
            method: 'PATCH',
            headers: { 'Content-Type': 'application/json' },
            body: JSON.stringify(
-               {title: document.querySelector('.recipe-title').innerHTML,
+               {title: document.querySelector('.change-recipe-title').innerHTML,
                person: document.querySelector('.change-person').innerHTML,
                time: document.querySelector('.change-zubereitungszeit').innerHTML,
                allIngredient: array,
-               description: document.querySelector('.recipe-zubereitung').innerHTML}
+               description: document.querySelector('.change-recipe-zubereitung').innerHTML}
            )
         }).then(() => {
-           history.push('/');  
+           history.push('/recipeslist');  
         })
      }
 
@@ -37,17 +37,18 @@ const ChangeRecipe = () => {
     return ( 
         <div className="change-div">
         {data && (
-            <article contentEditable="true">
-         <h2 className="recipe-title" >{ data.title }</h2>
-         <div className="recipe-zubereitungszeit">Zubereitungszeit <p className="change-zubereitungszeit">{data.time}</p> Min.</div>
-           <h3 className="recipe-liste-title">Zutaten für <p className="change-person">{data.person}</p> Personen:</h3>
+            // <article contentEditable="true">
+            <article>
+         <p className="change-recipe-title" >{ data.title }</p>
+         <p className="change-zubereitungszeit">{data.time}</p>
+         <p className="change-person">{data.person}</p>
            <ul className="recipe-zutaten-liste"> 
                      {data.allIngredient.map((allIngredient) => 
                         <li className="recipe-zutaten">{allIngredient}</li>
                      )}
                  </ul>
-            <h3>Zubereitung</h3>
-           <p className="recipe-zubereitung">{data.description}</p>
+            
+           <p className="change-recipe-zubereitung">{data.description}</p>
            <button className="change" onClick={handleChanceClick}>Speichern</button>
          </article>
          )}

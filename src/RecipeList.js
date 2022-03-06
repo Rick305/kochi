@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import useFetch from "./useFetch";
 import firebase from "./firebase";
 
 const RecipeList = (props) => {

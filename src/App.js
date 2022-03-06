@@ -5,7 +5,6 @@ import {BrowserRouter  as Router, Route, Switch} from 'react-router-dom';
 import RecipeList from './RecipeList';
 import RecipeAdded from './RecipeAdded';
 import Recipe from './Recipe';
-import ChangeRecipe from './ChangeRecipe';
 
 function App() {
 
@@ -36,10 +35,6 @@ function App() {
 
         <Route path="/recipes/:id">
           <Recipe />
-        </Route>
-
-        <Route path="/changerecipe/:id">
-          <ChangeRecipe />
         </Route>
 
       </Switch>

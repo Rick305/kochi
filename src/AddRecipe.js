@@ -1,11 +1,11 @@
-import { useEffect, useState, React, Fragment } from "react";
+import { useEffect, useState, React } from "react";
 import { useHistory } from "react-router";
-import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import firebase from "./firebase";
 
 const AddRecipe = (props) => {
 
-    const history = useHistory();
+const history = useHistory();
 const ref = firebase.firestore().collection("recipes");
 
 
@@ -91,7 +91,7 @@ const handleSubmit = (e) => {
         <div className="add-form">
             <h2>{location.state ? 'Passe das Rezept nach deinen Wünschen an' :'Füge deine ganz leckeren Rezepte hinzu!'}</h2>
             <form onSubmit={handleSubmit} className="add-form-input">
-                 <label for="title">Gericht</label>
+                 <label htmlFor="title">Gericht</label>
                  <input 
                  type="text" 
                  id="title" 
@@ -102,7 +102,7 @@ const handleSubmit = (e) => {
                  />
                  <div className="form-person-time">
                      <div className="person-wrapper">
-                        <label for="person">Anzahl Personen</label><br/>
+                        <label htmlFor="person">Anzahl Personen</label><br/>
                         <input
                         type="number"
                         id="person"
@@ -113,7 +113,7 @@ const handleSubmit = (e) => {
                         />
                      </div>
                      <div className="time-wrapper">
-                        <label for="dauer">Zubereitungszeit</label>
+                        <label htmlFor="dauer">Zubereitungszeit</label>
                         <div className="zubereitungszeit">
                             <input 
                             type="number" 
@@ -144,8 +144,8 @@ const handleSubmit = (e) => {
                      </div>
                  </div>
                  <div className="ingredients">
-                    <label for="zutaten">Zutaten</label> 
-                    <label for="zutaten" onClick={handleClick} className="plus">+</label><br/>
+                    <label htmlFor="zutaten">Zutaten</label> 
+                    <label htmlFor="zutaten" onClick={handleClick} className="plus">+</label><br/>
                  </div>
                 <div className="ingredients-list">
                      <input 
@@ -165,7 +165,7 @@ const handleSubmit = (e) => {
                      ))}
                 </div>
 
-                 <label for="arbeit">Zubereitung</label>
+                 <label htmlFor="arbeit">Zubereitung</label>
                  <textarea 
                  rows="5" 
                  value={description}

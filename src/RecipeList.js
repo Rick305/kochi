@@ -15,9 +15,7 @@ const RecipeList = (props) => {
     })
     }
     
-   useEffect(()=>{
-       getData()
-   }, []);
+       getData();
 
 
     const[title, setTitle] = useState('');
@@ -27,7 +25,7 @@ const RecipeList = (props) => {
     useEffect(() => {
         if(location.state)
             setTitle(location.state.text);
-        }, []
+        }, [location.state]
     )
 
     return ( 
@@ -36,7 +34,7 @@ const RecipeList = (props) => {
         <div className="filter">
 
             <div className="filter-name">
-                <label for="name">Gericht</label><br/>
+                <label htmlFor="name">Gericht</label><br/>
                 <input 
                 id="name"
                 type="input"
@@ -46,7 +44,7 @@ const RecipeList = (props) => {
             </div>
 
             <div className="filter-art">
-                <label for="art">Menüart</label><br/>
+                <label htmlFor="art">Menüart</label><br/>
                 <select 
                 name="art" 
                 id="filter-art"
@@ -89,8 +87,8 @@ const RecipeList = (props) => {
                             return recipe
                         }
                      }).map((data) => 
-                            <Link to={`/recipes/${data.id}`}>
-                                <div className="recipe-item" key={data.id}>                
+                            <Link to={`/recipes/${data.id}`} key={data.title}>
+                                <div className="recipe-item" >                
                                     <p className="recipe-list-title"> {data.title}</p>
                                     <p className="recipe-list-min">{data.time} min.</p>
                                     <ul> 

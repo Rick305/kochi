@@ -6,7 +6,7 @@
 }
 
 :root{
-    --green: #ff7d7d;
+    --red: #ff7d7d;
 }
 
 .app{
@@ -43,7 +43,7 @@ Nav bar
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: var(--green);
+    background-color: var(--red);
     margin: 0;
     z-index: 3;
 }
@@ -56,24 +56,19 @@ Nav bar
 }
 
 .nav-mobile img{
-    width: 25%;
+    width: 20%;
     margin: 7px;
     padding: 4px;
     /* border: .5px black solid; */
     
 }
 
-.select-nav{
-    
-    border-radius: 50%;
-}
-
 h1{
-    color: var(--green);
+    color: var(--red);
     display: inline-block;
     font-size: 32px;
-    font-weight: 200;
-    border-bottom: 5px var(--green) solid;
+    font-weight: 900;
+    border-bottom: 5px var(--red) solid;
     padding: 2px;
     margin: 23px;
 }
@@ -83,7 +78,7 @@ h1{
 }
 
 .nav-links a:hover{
-    color: var(--green);
+    color: var(--red);
 }
 
 .navbar-list{
@@ -101,7 +96,7 @@ h1{
 }
 
 .rezeptHinBttn{
-    background-color: var(--green);
+    background-color: var(--red);
     border-radius: 8px;
     color: white;
     padding: 15px;
@@ -109,12 +104,12 @@ h1{
 
 .rezeptHinBttn:hover{
     background-color: white;
-    color: var(--green);
-    border: var(--green) 2px solid;
+    color: var(--red);
+    border: var(--red) 2px solid;
     padding: 13px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     .nav-mobile {
         display: flex;
     }
@@ -194,7 +189,7 @@ Home
     height: 44px;
     margin:0;
     font-family: inherit;
-    background-color: var(--green);
+    background-color: var(--red);
     box-shadow: none;
     border: none;
     font-size: 24px;
@@ -286,8 +281,8 @@ Recipeslist
 .recipe-list a{
     padding: 25px;
     margin: 15px;
-    border: var(--green) 2px solid;
-    box-shadow: 5px 5px var(--green);
+    border: var(--red) 2px solid;
+    box-shadow: 5px 5px var(--red);
     cursor: pointer;
 }
 
@@ -322,7 +317,6 @@ Recipeslist
 @media screen and (max-width: 415px) {
     .collection-page{
         flex-direction: column;
-        display: inline-block;
         margin-bottom: 60px;
     }
     .recipe-list{grid-template-columns: 1fr;}
@@ -353,6 +347,7 @@ Add Recipe
 .add-form h2{
     font-weight: 100;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
 .add-form-input{
@@ -380,12 +375,17 @@ input,
 select,
 textarea{
     border:lightgray solid 1px;
-    margin: 5px 5px 5px 0;
+    margin: 5px 5px 30px 0;
     padding: 2px;
     line-height: 24px;
     font-size: 15px;
     font-family: inherit; 
     width: 100%;
+}
+
+.collection-page input,
+.collection-page select{
+    margin: 0;
 }
 
 .zubereitungszeit{
@@ -408,8 +408,7 @@ textarea{
 }
 
 #zutaten{
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    width: 80%;
 }
 
 .output-ingredients-list{
@@ -432,7 +431,7 @@ textarea{
     left: 6px;
     top: 33.5px;
     border-radius: 8px;
-    background-color: var(--green);
+    background-color: var(--red);
     line-height: 13px;
     font-size: 24px;
     font-weight: 100;
@@ -449,17 +448,15 @@ textarea{
 
 .save-changes,
 .submit{
-    background-color: var(--green);
+    background-color: var(--red);
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     text-align: center;
-    padding: 2px;
+    padding: 15px;
     font-size: 15px;
-    height: 30px;
-    box-sizing: border-box;
     line-height: 24px;
 }
 
@@ -468,6 +465,9 @@ textarea{
     .add-form-input {width: auto;}
     .form-person-time{flex-direction: column;}
     .submit{margin-bottom: 40px;}
+    #person,
+    #dauer,
+    #art { width: 80%;}
 }
 
 /* 
@@ -548,7 +548,7 @@ article{
 }
 
 .recipe-title{
-    border-bottom: var(--green) 1px solid;
+    border-bottom: var(--red) 1px solid;
 }
 
 h3{
@@ -584,7 +584,7 @@ h3{
 
 .delete,
 .change{
-    background-color: var(--green);
+    background-color: var(--red);
     border-radius: 8px;
     color: white;
     padding: 10px;

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import bgImg from './img/stock_photo.jpg';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
     
     return ( 
         <div className="home">
-          <img src={bgImg} className="homeBG"/>
+          <img src={bgImg} alt="Zwei Bowls mit leckrem Essen" className="homeBG"/>
 
           <div className="home-content">
           <h2 className="home-title">Suche nach deinen leckeren Gerichten</h2>

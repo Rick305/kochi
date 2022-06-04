@@ -31,7 +31,6 @@ const getData = () => {
 
     ref.get().then((item) => {
       const data = item.docs.map((doc) => ({...doc.data(), id: doc.id}))
-      // console.log(data)
       db = data;
       return {db};
 })

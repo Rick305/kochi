@@ -5,11 +5,13 @@ import {BrowserRouter  as Router, Route, Switch} from 'react-router-dom';
 import RecipeList from './RecipeList';
 import RecipeAdded from './RecipeAdded';
 import Recipe from './Recipe';
+import ScrollToTop from './scrollToTop';
 
 function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
     <div className="app">
       <div className="navbar">
       <Navbar />
@@ -17,25 +19,11 @@ function App() {
       <div className="main">
       <Switch>
 
-      <Route exact path="/">
-          <Home />
-        </Route>
-
-      <Route path="/recipeslist">
-          <RecipeList />
-        </Route>
-
-        <Route path="/addrecipe">
-          <AddRecipe />
-        </Route>
-
-        <Route path="/recipeadded">
-          <RecipeAdded />
-        </Route>
-
-        <Route path="/recipes/:id">
-          <Recipe />
-        </Route>
+        <Route path="/kochbuch" exact component={Home} />
+        <Route path="/recipeslist" component={RecipeList}/>
+        <Route path="/addrecipe" component={AddRecipe}/>
+        <Route path="/recipeadded" component={RecipeAdded}/>
+        <Route path="/recipes/:id" component={Recipe}/>
 
       </Switch>
       </div>

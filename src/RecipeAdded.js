@@ -1,11 +1,11 @@
 import { useHistory } from "react-router";
-import { useLocation, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const RecipeAdded = (props) => {
 
     const history = useHistory();
     const location = useLocation();
-    const { id } = useParams();
+    // const { id } = useParams();
 console.log(location.state.state)
 
     setTimeout(() => {

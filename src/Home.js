@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import bgImg from './img/stock_photo.jpg';
+import bgImg from './img/stock_photo.jpeg';
 
 const Home = () => {
     const [textSearch, setTextSearch] = useState('');

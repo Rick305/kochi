@@ -16,7 +16,7 @@ const Navbar = () => {
             
             <div className="nav-web">
                 <ul className="navbar-list">
-                    <li className="nav-links"><Link to="/kochbuch">Home</Link></li>
+                    <li className="nav-links"><Link to="/">Home</Link></li>
                     <li className="nav-links"><Link to="/recipeslist">Alle Rezepte</Link></li>
                     <Link to="/addrecipe"><li className="rezeptHinBttn">Rezept hinzufügen</li></Link>
                 </ul>

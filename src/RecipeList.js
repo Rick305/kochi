@@ -7,22 +7,21 @@ const RecipeList = (props) => {
     const location = useLocation();
     const [data, setData] = useState([]);
     const ref = firebase.firestore().collection("recipes");
+    const [err, setErr ] = useState(null);
 
     function getData() {
         ref.get().then((item) => {
           const items = item.docs.map((doc) => ({...doc.data(), id: doc.id}))
            setData(items);
-    })
+    }).catch(error => setErr(error))
     }
-    
-       getData();
-
 
     const[title, setTitle] = useState('');
     const[art, setArt] = useState('')
     const[time, setTime] = useState(120)
 
     useEffect(() => {
+        getData();
         if(location.state)
             setTitle(location.state.text);
         }, [location.state]
@@ -81,6 +80,7 @@ const RecipeList = (props) => {
 
 
         <div className="recipe-list">
+            {err && <h4 className="error-message">Leider können die Rezepten zurzeit nicht angezeigt werden.<br/><br/>Fehlermeldung: <i>{err.message}</i></h4>}
             {data && data.filter((recipe) => {
                         if(recipe.art.includes(art) && time > recipe.time && recipe.title.toLowerCase().includes(title.toLowerCase())){
                             

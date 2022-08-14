@@ -315,6 +315,10 @@ Recipeslist
     list-style-type: none;
 }
 
+.error-message{
+    margin-left:10px;
+    position: absolute;
+}
 @media screen and (max-width: 715px) {
     .recipe-list{grid-template-columns: 1fr 1fr;}
 }

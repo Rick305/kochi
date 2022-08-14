@@ -19,7 +19,7 @@ function App() {
       <div className="main">
       <Switch>
 
-        <Route path="/kochbuch" exact component={Home} />
+        <Route path="/" exact component={Home} />
         <Route path="/recipeslist" component={RecipeList}/>
         <Route path="/addrecipe" component={AddRecipe}/>
         <Route path="/recipeadded" component={RecipeAdded}/>

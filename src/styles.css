@@ -322,7 +322,7 @@ Recipeslist
 @media screen and (max-width: 415px) {
     .collection-page{
         flex-direction: column;
-        margin-bottom: 60px;
+        padding-bottom: 60px;
     }
     .recipe-list{grid-template-columns: 1fr;}
     

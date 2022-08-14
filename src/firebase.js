@@ -3,7 +3,7 @@ import firebase from "firebase/compat/app";
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-    apiKey: AIzaSyCudSeOoCwbKqGu00nx4EHGRgDcttkyKfg,
+    apiKey: "AIzaSyCudSeOoCwbKqGu00nx4EHGRgDcttkyKfg",
     //process.env.REACT_APP_API_KEY,
     authDomain: "kochi-kochbuch.firebaseapp.com",
     projectId: "kochi-kochbuch",

@@ -12,7 +12,7 @@ const Navbar = () => {
     return ( 
         <nav className='navbar'>
 
-            <h1><Link to ="/kochbuch">Kochi</Link></h1>
+            <h1><Link to ="/">Kochi</Link></h1>
             
             <div className="nav-web">
                 <ul className="navbar-list">
